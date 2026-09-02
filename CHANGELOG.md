@@ -20,3 +20,28 @@
 * Added hospital case study.
 * Added requirements documentation.
 * Added project progress tracking.
+
+## [0.2.0] — 2026-09-02
+
+### Added
+
+* Clean Architecture-inspired project structure.
+* Hospital.Domain, Hospital.Application, Hospital.Infrastructure,
+  Hospital.Presentation, and Hospital.Contracts.
+* Entity<TId>.
+* ValueObject.
+* AggregateRoot<TId>.
+* Architecture dependency rules.
+* ADR-001 through ADR-004.
+
+### Architecture
+
+* Defined Presentation ? Application ? Domain dependency direction.
+* Defined Infrastructure as the implementation layer for inward-facing abstractions.
+* Enforced Domain isolation.
+* Established plugin contracts through Hospital.Contracts.
+
+### Verification
+
+* Verified successful solution build with dotnet build.
+* Verified Domain compile-time isolation.

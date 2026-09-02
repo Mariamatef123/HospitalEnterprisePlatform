@@ -6,4 +6,12 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Include="C:\Users\LENOVO\ASP .NET Core\Hospital Enterprise Platform\HospitalEnterprisePlatform\src\Hospital.Domain\Common\AggregateRoot.cs" Link="AggregateRoot.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Common\" />
+  </ItemGroup>
+
 </Project>
