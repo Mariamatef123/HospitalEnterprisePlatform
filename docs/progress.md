@@ -252,3 +252,98 @@ The build completed successfully. The `CS1668` messages are environment warnings
 ## Day 2 Outcome
 
 Nile Care V1 now has a defined layered architecture with clear dependency rules and an isolated Domain layer. The core Domain primitives (`Entity<TId>`, `ValueObject`, and `AggregateRoot<TId>`) have been established without adding unnecessary domain complexity.
+
+# Day 3 — Employee Domain & Subtypes
+
+**Status:** ✅ Completed
+
+## Phase 1 — Study & Design
+
+* [x] Task 3.1 — Study Inheritance vs Composition
+* [x] Task 3.2 — Study Abstract Classes
+* [x] Task 3.3 — Study Behavioral Polymorphism
+
+## Phase 2 — DDD Modeling
+
+* [x] Task 3.4 — Identify Employee Entity
+* [x] Task 3.5 — Decide Employee Aggregate Boundary
+* [x] Task 3.6 — Identify Value Objects
+
+## Phase 3 — Common Employee Model
+
+* [x] Task 3.7 — Create Employees folder
+* [x] Task 3.8 — Create HospitalEmployee
+* [x] Task 3.9 — Create EmploymentStatus
+* [x] Task 3.10 — Create Employee Value Objects
+
+## Phase 4 — Employee Specializations
+
+* [x] Task 3.11 — Implement Doctor
+* [x] Task 3.12 — Implement Nurse
+* [x] Task 3.13 — Implement Receptionist
+* [x] Task 3.14 — Implement Pharmacist
+* [x] Task 3.15 — Implement LabTechnician
+* [x] Task 3.16 — Implement BillingClerk
+
+## Phase 5 — Domain Behavior
+
+* [x] Task 3.17 — Design GetRolePermissions()
+* [x] Task 3.18 — Implement Doctor Permissions
+* [x] Task 3.19 — Implement Nurse Permissions
+* [x] Task 3.20 — Implement Other Role Permissions
+* [x] Task 3.21 — Verify Runtime Polymorphism
+
+## Phase 6 — Domain Rules & Validation
+
+* [x] Task 3.22 — Employee Identity Rules
+* [x] Task 3.23 — Employee Name Rules
+* [x] Task 3.24 — Phone Rules
+* [x] Task 3.25 — Doctor Rules
+* [x] Task 3.26 — Employment Status Rules
+
+## Phase 7 — Domain Tests
+
+* [x] Task 3.27 — Create EmployeeTests.cs / Employee Tests
+* [x] Task 3.28 — Test Abstract Base
+* [x] Task 3.29 — Test Inheritance
+* [x] Task 3.30 — Test Role Behavior
+* [x] Task 3.31 — Test Polymorphism
+* [x] Task 3.32 — Test Value Objects
+* [x] Task 3.33 — Test Employee Validation
+
+## Phase 8 — UML
+
+* [x] Task 3.34 — Create Employee Class Diagram
+* [x] Task 3.35 — Verify UML Against Code
+
+## Phase 9 — Documentation
+
+* [x] Task 3.36 — Employee Domain Documentation
+
+## Phase 10 — Final Verification
+
+* [x] Task 3.37 — `dotnet build`
+* [x] Task 3.38 — `dotnet test`
+* [x] Task 3.39 — Check Architecture
+* [x] Task 3.40 — Review Git Changes
+
+## Day 3 Outcome
+
+The Employee Domain has been implemented using DDD and object-oriented principles.
+
+Completed:
+
+* `HospitalEmployee` aggregate root
+* Employee entity identity
+* Employee value objects
+* Employee specializations
+* Inheritance and IS-A relationships
+* Runtime polymorphism
+* Role-based permissions
+* Domain validation
+* Automated domain tests
+* Employee UML class diagram
+* Employee Domain documentation
+* Architecture isolation verification
+
+The Employee Domain remains focused on domain logic without introducing JSON, file I/O, databases, EF Core, HTTP, console logic, or application services.
