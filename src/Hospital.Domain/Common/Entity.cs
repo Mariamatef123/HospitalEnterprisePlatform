@@ -3,7 +3,10 @@
 public abstract class Entity<TId>
 {
     public TId Id { get; protected set; } = default!;
-
+    protected Entity(TId id)
+    {
+        Id = id;
+    }
     public override bool Equals(object? obj)
     {
         if (obj is not Entity<TId> other)

@@ -45,3 +45,36 @@
 
 * Verified successful solution build with dotnet build.
 * Verified Domain compile-time isolation.
+
+## [0.3.0] — 2026-09-03
+
+### Added
+
+* Implemented `HospitalEmployee` as the Employee aggregate root.
+* Added employee specializations:
+
+  * `Doctor`
+  * `Nurse`
+  * `Receptionist`
+  * `Pharmacist`
+  * `LabTechnician`
+  * `BillingClerk`
+* Added employee value objects:
+
+  * `PersonName`
+  * `PhoneNumber`
+  * `NationalId`
+* Added employee permissions and role-specific behavior.
+* Implemented inheritance and runtime polymorphism.
+* Added employee validation rules.
+* Added automated Employee Domain tests.
+* Added Employee UML class diagram.
+* Added Employee Domain documentation.
+* Documented inheritance and DDD design decisions.
+
+### Verification
+
+* Verified successful solution build with `dotnet build`.
+* Verified all Employee Domain tests pass with `dotnet test`.
+* Verified Employee Domain isolation from Infrastructure, Application,
+  Presentation, JSON, database, EF Core, HTTP, and file I/O.
