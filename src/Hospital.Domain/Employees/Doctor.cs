@@ -9,18 +9,17 @@ namespace Hospital.Domain.Employees
 {
     public sealed class Doctor: HospitalEmployee
     {
-        public string Specialty { get; private set; }
+        public DoctorSpecialty Specialty { get;  }
         public string LicenseNumber { get; private set; }
-        public Doctor(Guid id, NationalId nationalId, PersonName name, PhoneNumber phone, Guid departmentId, string specialty, string licenseNumber) : base(id, nationalId, name, phone, departmentId)
+        public Doctor(Guid id, NationalId nationalId, PersonName name, PhoneNumber phone, Guid departmentId, DoctorSpecialty specialty, string licenseNumber) : base(id, nationalId, name, phone, departmentId)
         {
-            if (string.IsNullOrWhiteSpace(specialty))
-                throw new ArgumentException("Specialty is required.");
-
+            if (!Enum.IsDefined(specialty))
+                throw new ArgumentException("Invalid doctor specialty.");
             if (string.IsNullOrWhiteSpace(licenseNumber))
                 throw new ArgumentException("License number is required.");
 
             Specialty = specialty;
-            LicenseNumber = licenseNumber;
+            LicenseNumber = licenseNumber.Trim();
         }
 
         public override IReadOnlyCollection<EmployeePermission> GetRolePermissions()
