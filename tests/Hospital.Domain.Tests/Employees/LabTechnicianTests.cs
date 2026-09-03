@@ -1,12 +1,6 @@
 ﻿using FluentAssertions;
 using Hospital.Domain.Employees;
 using Hospital.Domain.Employees.ValueObjects;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace Hospital.Domain.Tests.Employees
 {
     public class LabTechnicianTests

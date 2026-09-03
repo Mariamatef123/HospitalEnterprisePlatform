@@ -11,7 +11,7 @@ namespace Hospital.Domain.Tests.Employees.ValueObjects
     public class NationalIdTests
     {
         [Fact]
-        public void Create_WithValidNationalId_ShouldCreateNationalId()
+        public void Create_WithValidNationalId_CreatesNationalId()
         {
             var nationalId1 = new NationalId("30203546982365");
             nationalId1.Value.Should().Be("30203546982365");

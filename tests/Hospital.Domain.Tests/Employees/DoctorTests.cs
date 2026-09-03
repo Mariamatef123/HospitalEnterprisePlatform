@@ -1,11 +1,7 @@
 ﻿using FluentAssertions;
 using Hospital.Domain.Employees;
 using Hospital.Domain.Employees.ValueObjects;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Hospital.Domain.Tests.Employees
 {
@@ -61,7 +57,7 @@ namespace Hospital.Domain.Tests.Employees
             act.Should().Throw<ArgumentException>().WithMessage("License number is required.");
         }
         [Fact]
-        public void Doctor_Should_Have_Specialization()
+        public void Doctor_Should_Have_Specialty()
         {
             var doctor = CreateDoctor();
             doctor.Specialty.Should().Be(DoctorSpecialty.Cardiology);
