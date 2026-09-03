@@ -13,6 +13,8 @@ namespace Hospital.Domain.Employees
 
         public Nurse(Guid id,NationalId nationalId,PersonName name,PhoneNumber phone,Guid departmentId,ShiftType shift): base(id, nationalId, name, phone, departmentId)
         {
+            if (!Enum.IsDefined(shift))
+                throw new ArgumentException("Invalid shift.");
             Shift = shift;
         }
 
