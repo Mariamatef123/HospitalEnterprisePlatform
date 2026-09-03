@@ -11,7 +11,7 @@ namespace Hospital.Domain.Employees
     {
         public string Specialty { get; private set; }
         public string LicenseNumber { get; private set; }
-        public Doctor(Guid id, NationalId nationalId, PersonName name, PhoneNumber phone, Guid departmentId, EmploymentStatus status, string specialty, string licenseNumber) : base(id, nationalId, name, phone, departmentId)
+        public Doctor(Guid id, NationalId nationalId, PersonName name, PhoneNumber phone, Guid departmentId, string specialty, string licenseNumber) : base(id, nationalId, name, phone, departmentId)
         {
             if (string.IsNullOrWhiteSpace(specialty))
                 throw new ArgumentException("Specialty is required.");
