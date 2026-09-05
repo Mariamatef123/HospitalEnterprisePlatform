@@ -1,6 +1,6 @@
 # Changelog
 
-## [0.1.0] — 2026-09-01
+## [0.1.0] ï¿½ 2026-09-01
 
 ### Added
 
@@ -21,7 +21,7 @@
 * Added requirements documentation.
 * Added project progress tracking.
 
-## [0.2.0] — 2026-09-02
+## [0.2.0] ï¿½ 2026-09-02
 
 ### Added
 
@@ -46,7 +46,7 @@
 * Verified successful solution build with dotnet build.
 * Verified Domain compile-time isolation.
 
-## [0.3.0] — 2026-09-03
+## [0.3.0] ï¿½ 2026-09-03
 
 ### Added
 
@@ -78,3 +78,100 @@
 * Verified all Employee Domain tests pass with `dotnet test`.
 * Verified Employee Domain isolation from Infrastructure, Application,
   Presentation, JSON, database, EF Core, HTTP, and file I/O.
+## [0.4.0] â€” 2026-09-05
+
+### Added
+
+* Implemented `Department` as the Department aggregate root.
+
+* Added Department identity using `Guid`.
+
+* Added Department name validation.
+
+* Added recursive parent-child Department hierarchy.
+
+* Added support for root, child, grandchild, and deep nested Departments.
+
+* Added `AddSubDepartment()` for building the Department hierarchy.
+
+* Added `RemoveSubDepartment()` for removing child Departments.
+
+* Added recursive Department lookup.
+
+* Added `HasChildren()` for Department hierarchy inspection.
+
+* Added employee assignment to Departments using employee IDs.
+
+* Added duplicate employee assignment validation.
+
+* Added employee reassignment between Departments.
+
+* Added support for cross-branch employee reassignment.
+
+* Added validation for invalid employee reassignment.
+
+* Added circular hierarchy protection.
+
+* Added self-reference protection.
+
+* Added recursive Department tree generation.
+
+* Added Depth-First Search (DFS) Department traversal.
+
+* Added support for arbitrary-depth Department hierarchies.
+
+### Testing
+
+* Added automated Department Domain tests.
+
+* Added tests for root, child, grandchild, and deep Department hierarchies.
+
+* Added tests for Department name validation.
+
+* Added tests for recursive Department lookup.
+
+* Added tests for Department not found scenarios.
+
+* Added tests for self-reference and circular hierarchy protection.
+
+* Added tests for employee assignment.
+
+* Added tests for duplicate employee assignment.
+
+* Added tests for employee reassignment.
+
+* Added tests for invalid reassignment.
+
+* Added tests for cross-branch reassignment.
+
+* Added tests for DFS traversal and Department tree rendering.
+
+### Documentation
+
+* Added Department Domain documentation.
+
+* Added Department UML class diagram.
+
+* Added Employee Reassignment Activity Diagram.
+
+* Documented Department hierarchy and business rules.
+
+* Documented employee assignment and reassignment rules.
+
+### Verification
+
+* Verified successful solution build with `dotnet build`.
+
+* Verified all Department Domain tests pass with `dotnet test`.
+
+* Verified recursive Department hierarchy operations.
+
+* Verified DFS traversal behavior.
+
+* Verified circular hierarchy protection.
+
+* Verified duplicate employee assignment prevention.
+
+* Verified employee reassignment behavior.
+
+* Verified Department Domain isolation from Infrastructure, Application, Presentation, JSON, database, EF Core, HTTP, and file I/O.
