@@ -347,3 +347,240 @@ Completed:
 * Architecture isolation verification
 
 The Employee Domain remains focused on domain logic without introducing JSON, file I/O, databases, EF Core, HTTP, console logic, or application services.
+# Day 4 — Department Domain & Recursive Tree Structure
+
+**Status:** ✅ Completed
+
+## Phase 1 — Study & Design
+
+* [x] Task 4.1 — Study Composite Pattern
+
+* [x] Task 4.2 — Study N-ary Trees
+
+* [x] Task 4.3 — Study DFS Recursion
+
+* [x] Task 4.4 — Define Department Business Rules
+
+## Phase 2 — DDD Modeling
+
+* [x] Task 4.5 — Identify Department Aggregate
+
+* [x] Task 4.6 — Define Department Identity
+
+* [x] Task 4.7 — Define Department Properties
+
+* [x] Task 4.8 — Define Department Invariants
+
+## Phase 3 — Department Implementation
+
+* [x] Task 4.9 — Create Departments folder
+
+* [x] Task 4.10 — Implement Department Aggregate
+
+* [x] Task 4.11 — Implement Department Name Validation
+
+* [x] Task 4.12 — Implement `AddSubDepartment()`
+
+* [x] Task 4.13 — Prevent Circular Hierarchy
+
+* [x] Task 4.14 — Implement `FindDepartmentRecursive()`
+
+* [x] Task 4.15 — Handle Department Not Found
+
+## Phase 4 — Employee Assignment
+
+* [x] Task 4.16 — Implement `AssignEmployee()`
+
+* [x] Task 4.17 — Prevent Duplicate Employee Assignment
+
+* [x] Task 4.18 — Implement Employee Reassignment
+
+* [x] Task 4.19 — Reassign to Child Department
+
+* [x] Task 4.20 — Reassign Across Branches
+
+* [x] Task 4.21 — Validate Invalid Target Department
+
+## Phase 5 — Recursive Tree Rendering
+
+* [x] Task 4.22 — Design Department Tree Output
+
+* [x] Task 4.23 — Implement `PrintDepartmentTree()`
+
+* [x] Task 4.24 — Implement Manual Indentation
+
+* [x] Task 4.25 — Verify DFS Traversal
+
+* [x] Task 4.26 — Verify 4+ Department Levels
+
+## Phase 6 — Domain Tests
+
+* [x] Task 4.27 — Create Department Tests
+
+* [x] Task 4.28 — Test Root Department
+
+* [x] Task 4.29 — Test Child Department
+
+* [x] Task 4.30 — Test Grandchild Department
+
+* [x] Task 4.31 — Test Deep Hierarchy
+
+* [x] Task 4.32 — Test Empty Department
+
+* [x] Task 4.33 — Test `AddSubDepartment()`
+
+* [x] Task 4.34 — Test Recursive Lookup
+
+* [x] Task 4.35 — Test Department Not Found
+
+* [x] Task 4.36 — Test Circular Hierarchy Protection
+
+* [x] Task 4.37 — Test Duplicate Employee Assignment
+
+* [x] Task 4.38 — Test Employee Reassignment
+
+* [x] Task 4.39 — Test Invalid Reassignment
+
+* [x] Task 4.40 — Test Cross-Branch Reassignment
+
+* [x] Task 4.41 — Test Department Tree Printing
+
+## Phase 7 — UML & Activity Diagram
+
+* [x] Task 4.42 — Update Department Class Diagram
+
+* [x] Task 4.43 — Show Self-Referential Composition
+
+* [x] Task 4.44 — Verify UML Against Code
+
+* [x] Task 4.45 — Create Employee Reassignment Activity Diagram
+
+## Phase 8 — Documentation
+
+* [x] Task 4.46 — Document Department Aggregate
+
+* [x] Task 4.47 — Document Recursive Hierarchy
+
+* [x] Task 4.48 — Document Composite Pattern Decision
+
+* [x] Task 4.49 — Document Department Business Rules
+
+* [x] Task 4.50 — Document Employee Reassignment Rules
+
+## Phase 9 — Final Verification
+
+* [x] Task 4.51 — `dotnet build`
+
+* [x] Task 4.52 — `dotnet test`
+
+* [x] Task 4.53 — Verify No LINQ
+
+* [x] Task 4.54 — Verify Recursion
+
+* [x] Task 4.55 — Verify Circular Hierarchy Protection
+
+* [x] Task 4.56 — Verify Domain Isolation
+
+* [x] Task 4.57 — Review Git Changes
+
+* [x] Task 4.58 — Update `progress.md`
+
+* [x] Task 4.59 — Update `changelog.md`
+
+## Phase 10 — GitHub Issue & Planning
+
+* [x] Task 4.60 — Create Department Issue
+
+* [x] Task 4.61 — Add GitHub Labels
+
+* [x] Task 4.62 — Create `feature/department-domain` Branch
+
+## Phase 11 — GitHub Implementation & Delivery
+
+* [x] Task 4.63 — Implement Department with Small Commits
+
+* [x] Task 4.64 — Push Feature Branch
+
+* [x] Task 4.65 — Create Pull Request
+
+* [x] Task 4.66 — Link PR to Issue
+
+* [x] Task 4.67 — Verify CI
+
+* [x] Task 4.68 — Review PR
+
+* [x] Task 4.69 — Merge PR
+
+* [x] Task 4.70 — Update Local `develop`
+
+* [x] Task 4.71 — Verify Issue Closed
+
+* [x] Task 4.72 — Delete Feature Branch
+
+* [x] Task 4.73 — GitHub Project
+
+* [x] Task 4.74 — Verify Final GitHub State
+
+## Day 4 Outcome
+
+The Department Domain has been implemented using DDD principles and a recursive hierarchical structure.
+
+Completed:
+
+* `Department` aggregate root
+
+* Department identity and properties
+
+* Department name validation
+
+* Parent-child department relationships
+
+* Recursive department hierarchy
+
+* Composite Pattern structure
+
+* N-ary tree modeling
+
+* Recursive department lookup
+
+* DFS traversal
+
+* Manual tree indentation and printing
+
+* Circular hierarchy protection
+
+* Employee assignment
+
+* Duplicate employee assignment protection
+
+* Employee reassignment
+
+* Child department reassignment
+
+* Cross-branch reassignment
+
+* Invalid target department validation
+
+* Automated Department domain tests
+
+* Deep hierarchy testing
+
+* Department UML class diagram
+
+* Employee Reassignment Activity Diagram
+
+* Department Domain documentation
+
+* Department business rules documentation
+
+* Employee reassignment rules documentation
+
+* Build and test verification
+
+* No-LINQ verification
+
+* Domain isolation verification
+
+* GitHub Issue, labels, feature branch, commits, PR, CI, review, and merge
+
+The Department Domain remains focused on domain logic without introducing JSON, file I/O, databases, EF Core, HTTP, console logic, application services, or repository implementations.
