@@ -1,6 +1,6 @@
 ﻿using Hospital.Domain.Common;
 
-namespace Hospital.Domain.Employees.ValueObjects
+namespace Hospital.Domain.Common.ValueObjects
 {
     public sealed class PersonName: ValueObject
     {

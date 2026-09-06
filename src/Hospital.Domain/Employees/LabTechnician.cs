@@ -1,5 +1,5 @@
-﻿using Hospital.Domain.Employees;
-using Hospital.Domain.Employees.ValueObjects;
+﻿using Hospital.Domain.Common.ValueObjects;
+using Hospital.Domain.Employees;
 
 public sealed class LabTechnician : HospitalEmployee
 {

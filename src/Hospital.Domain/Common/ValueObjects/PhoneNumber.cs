@@ -1,7 +1,7 @@
 ﻿using Hospital.Domain.Common;
 using System.Text.RegularExpressions;
 
-namespace Hospital.Domain.Employees.ValueObjects
+namespace Hospital.Domain.Common.ValueObjects
 {
     public sealed class PhoneNumber: ValueObject
     {

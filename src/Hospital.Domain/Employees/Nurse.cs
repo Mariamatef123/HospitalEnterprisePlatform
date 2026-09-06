@@ -1,4 +1,4 @@
-﻿using Hospital.Domain.Employees.ValueObjects;
+﻿using Hospital.Domain.Common.ValueObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
