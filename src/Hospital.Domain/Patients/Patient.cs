@@ -95,7 +95,6 @@ namespace Hospital.Domain.Patients
             if (Status == PatientStatus.Inactive)
                 throw new InvalidOperationException(
                     "Patient is already inactive.");
-
             Status = PatientStatus.Inactive;
         }
 

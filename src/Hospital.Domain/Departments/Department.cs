@@ -3,10 +3,8 @@ namespace Hospital.Domain.Departments
 {
     public sealed class Department : AggregateRoot<Guid>, IOrganizationUnit
     {
-        private readonly List<IOrganizationUnit> _children = new();
-        private readonly List<Guid> _assignedEmployeeIds = new();
-
-
+        private readonly List<IOrganizationUnit> _children  = new();
+        public readonly List<Guid> _assignedEmployeeIds = new();
         public string Name { get; }
         public Department? Parent { get; private set; }
         public Guid? ParentDepartmentId => Parent?.Id;

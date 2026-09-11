@@ -12,7 +12,7 @@ namespace Hospital.Domain.Patients.ValueObjects
             public string? ApartmentNumber { get; }
             public string? PostalCode { get; }
 
-        public HomeAddress(string governorate, string city, string street, string buildingNumber, string? district, string? apartmentNumber, string? postalCode)
+        public HomeAddress(string governorate, string city, string street, string buildingNumber, string? district = null, string? apartmentNumber = null, string? postalCode = null)
         {
             if(string.IsNullOrWhiteSpace(governorate))
                 throw new ArgumentException("Governorate is required.", nameof(governorate));

@@ -4,10 +4,12 @@ namespace Hospital.Domain.Patients.ValueObjects
 {
     public sealed class EmergencyContact : ValueObject
     {
+
         public PersonName Name { get; }
         public EmergencyContactRelationship Relationship { get; }
         public PhoneNumber PhoneNumber { get; }
 
+     
         public EmergencyContact(
             PersonName name,
             EmergencyContactRelationship relationship,

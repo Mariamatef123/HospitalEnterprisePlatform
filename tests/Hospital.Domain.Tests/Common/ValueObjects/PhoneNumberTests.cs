@@ -1,12 +1,12 @@
 ﻿using FluentAssertions;
-using Hospital.Domain.Employees.ValueObjects;
+using Hospital.Domain.Common.ValueObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Hospital.Domain.Tests.Employees.ValueObjects
+namespace Hospital.Domain.Tests.Common.ValueObjects
 {
     public class PhoneNumberTests
     {
