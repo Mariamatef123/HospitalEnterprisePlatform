@@ -584,3 +584,189 @@ Completed:
 * GitHub Issue, labels, feature branch, commits, PR, CI, review, and merge
 
 The Department Domain remains focused on domain logic without introducing JSON, file I/O, databases, EF Core, HTTP, console logic, application services, or repository implementations.
+
+# Day 5 — Patient Domain & Contact Information
+
+**Status:** ✅ Completed
+
+## Phase 1 — Study & Design
+
+* [x] Task 5.1 — Study DDD Aggregate Roots
+* [x] Task 5.2 — Study Entities vs Value Objects
+* [x] Task 5.3 — Study Value Object Immutability
+* [x] Task 5.4 — Define Patient Business Rules
+* [x] Task 5.5 — Identify Patient Aggregate Boundary
+* [x] Task 5.6 — Identify Required Patient Information
+* [x] Task 5.7 — Identify Sensitive Patient Information
+* [x] Task 5.8 — Define Patient Status Values
+* [x] Task 5.9 — Define Patient Lifecycle
+
+## Phase 2 — DDD Modeling
+
+* [x] Task 5.10 — Identify Patient Aggregate Root
+* [x] Task 5.11 — Define Patient Identity
+* [x] Task 5.12 — Define Patient Properties
+* [x] Task 5.13 — Define Patient Invariants
+* [x] Task 5.14 — Define ContactInfo Value Object
+* [x] Task 5.15 — Define HomeAddress Value Object
+* [x] Task 5.16 — Define EmergencyContact Value Object
+* [x] Task 5.17 — Reuse Shared PersonName Value Object
+* [x] Task 5.18 — Reuse Shared NationalId Value Object
+* [x] Task 5.19 — Reuse Shared PhoneNumber Value Object
+
+## Phase 3 — Patient Implementation
+
+* [x] Task 5.20 — Create Patients folder
+* [x] Task 5.21 — Implement Patient Aggregate
+* [x] Task 5.22 — Implement Patient Identity
+* [x] Task 5.23 — Add National ID
+* [x] Task 5.24 — Add Arabic Name
+* [x] Task 5.25 — Add English Name
+* [x] Task 5.26 — Add Date of Birth
+* [x] Task 5.27 — Add Gender
+* [x] Task 5.28 — Add Blood Type
+* [x] Task 5.29 — Add ContactInfo
+* [x] Task 5.30 — Add Patient Status
+* [x] Task 5.31 — Implement Patient Validation
+
+## Phase 4 — Contact Information Value Objects
+
+* [x] Task 5.32 — Implement ContactInfo
+* [x] Task 5.33 — Implement EmailAddress
+* [x] Task 5.34 — Implement HomeAddress
+* [x] Task 5.35 — Implement EmergencyContact
+* [x] Task 5.36 — Implement Emergency Contact Relationship
+* [x] Task 5.37 — Enforce ContactInfo Immutability
+* [x] Task 5.38 — Implement Structural Equality
+* [x] Task 5.39 — Implement Value Object Hashing
+* [x] Task 5.40 — Verify Patient-ContactInfo Composition
+
+## Phase 5 — Patient Invariants & Lifecycle
+
+* [x] Task 5.41 — Validate Arabic Name
+* [x] Task 5.42 — Validate English Name
+* [x] Task 5.43 — Validate National ID
+* [x] Task 5.44 — Validate Date of Birth
+* [x] Task 5.45 — Validate Gender
+* [x] Task 5.46 — Validate Patient Status
+* [x] Task 5.47 — Validate Required Contact Information
+* [x] Task 5.48 — Define Patient Registration State
+* [x] Task 5.49 — Define Active Patient State
+* [x] Task 5.50 — Define Inactive Patient State
+* [x] Task 5.51 — Preserve Patient Identity During Status Changes
+* [x] Task 5.52 — Preserve Historical Patient Records
+
+## Phase 6 — Domain Tests
+
+* [x] Task 5.53 — Create Patient Aggregate Tests
+* [x] Task 5.54 — Test Valid Patient Creation
+* [x] Task 5.55 — Test Arabic Name Preservation
+* [x] Task 5.56 — Test English Name Preservation
+* [x] Task 5.57 — Test Multi-byte UTF-8 Characters
+* [x] Task 5.58 — Test Required Patient Information
+* [x] Task 5.59 — Test Invalid National ID
+* [x] Task 5.60 — Test Invalid Date of Birth
+* [x] Task 5.61 — Test Invalid Contact Information
+* [x] Task 5.62 — Test Patient Status
+* [x] Task 5.63 — Test ContactInfo Structural Equality
+* [x] Task 5.64 — Test ContactInfo Hash Code Equality
+* [x] Task 5.65 — Test Different ContactInfo Values
+* [x] Task 5.66 — Test ContactInfo Immutability
+* [x] Task 5.67 — Test ContactInfo Replacement
+* [x] Task 5.68 — Test Original ContactInfo Remains Unchanged
+
+## Phase 7 — UML
+
+* [x] Task 5.69 — Create Patient Class Diagram
+* [x] Task 5.70 — Show Patient Aggregate Root
+* [x] Task 5.71 — Show Patient-ContactInfo Composition
+* [x] Task 5.72 — Show ContactInfo Value Objects
+* [x] Task 5.73 — Show Patient Properties and Types
+* [x] Task 5.74 — Add UML Constraints
+* [x] Task 5.75 — Verify UML Against Code
+
+## Phase 8 — Documentation
+
+* [x] Task 5.76 — Document Patient Aggregate
+* [x] Task 5.77 — Document Patient Identity
+* [x] Task 5.78 — Document Patient Invariants
+* [x] Task 5.79 — Document Patient Lifecycle
+* [x] Task 5.80 — Document ContactInfo Value Object
+* [x] Task 5.81 — Document HomeAddress
+* [x] Task 5.82 — Document EmergencyContact
+* [x] Task 5.83 — Document Value Object Immutability
+* [x] Task 5.84 — Document Structural Equality
+* [x] Task 5.85 — Document Patient-ContactInfo Composition
+* [x] Task 5.86 — Document Sensitive Patient Data
+
+## Phase 9 — Final Verification
+
+* [x] Task 5.87 — `dotnet build`
+* [x] Task 5.88 — `dotnet test`
+* [x] Task 5.89 — Verify Patient Domain Tests
+* [x] Task 5.90 — Verify ContactInfo Immutability
+* [x] Task 5.91 — Verify Value Object Equality
+* [x] Task 5.92 — Verify Patient Invariants
+* [x] Task 5.93 — Verify No LINQ
+* [x] Task 5.94 — Verify Domain Isolation
+* [x] Task 5.95 — Review Git Changes
+* [x] Task 5.96 — Update `progress.md`
+* [x] Task 5.97 — Update `changelog.md`
+
+## Phase 10 — GitHub Issue & Planning
+
+* [x] Task 5.98 — Create / Update Patient Issue
+* [x] Task 5.99 — Add Patient Domain Labels
+* [x] Task 5.100 — Create `feature/patient-domain` Branch
+
+## Phase 11 — GitHub Implementation & Delivery
+
+* [x] Task 5.101 — Implement Patient with Small Commits
+* [x] Task 5.102 — Push Feature Branch
+* [x] Task 5.103 — Create Pull Request
+* [x] Task 5.104 — Link PR to Issue
+* [x] Task 5.105 — Verify CI
+* [x] Task 5.106 — Review PR
+* [x] Task 5.107 — Merge PR
+* [x] Task 5.108 — Update Local `develop`
+* [x] Task 5.109 — Verify Issue Closed
+* [x] Task 5.110 — Delete Feature Branch
+* [x] Task 5.111 — Update GitHub Project
+* [x] Task 5.112 — Verify Final GitHub State
+
+## Day 5 Outcome
+
+The Patient Domain has been implemented using DDD principles with a focused aggregate boundary and immutable value objects.
+
+Completed:
+
+* `Patient` aggregate root
+* Patient identity
+* Patient National ID
+* Arabic and English patient names
+* Date of Birth
+* Gender
+* Blood Type
+* Patient status and lifecycle
+* `ContactInfo` value object
+* `EmailAddress` value object
+* `HomeAddress` value object
+* `EmergencyContact` value object
+* Emergency contact relationship
+* Shared `PersonName`, `NationalId`, and `PhoneNumber` value objects
+* Patient validation and invariants
+* Patient lifecycle rules
+* Patient-ContactInfo composition
+* Immutable contact information
+* Value object structural equality
+* Automated Patient Domain tests
+* Patient UML class diagram
+* Patient Domain documentation
+* Patient lifecycle documentation
+* Patient business rules documentation
+* Build and test verification
+* No-LINQ verification
+* Domain isolation verification
+* GitHub Issue, labels, feature branch, commits, PR, CI, review, and merge
+
+The Patient Domain remains focused on patient identity and core patient information without introducing appointments, medical records, billing, persistence, databases, EF Core, HTTP, console logic, application services, or repository implementations.
