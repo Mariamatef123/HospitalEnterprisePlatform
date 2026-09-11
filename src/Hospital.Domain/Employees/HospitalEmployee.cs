@@ -1,5 +1,6 @@
 ﻿using Hospital.Domain.Common;
-using Hospital.Domain.Employees.ValueObjects;
+using Hospital.Domain.Common.ValueObjects;
+using Hospital.Domain.Departments;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,5 +53,8 @@ namespace Hospital.Domain.Employees
             Status = EmploymentStatus.Suspended;
         }
         public abstract IReadOnlyCollection<EmployeePermission> GetRolePermissions();
+
+  
+       
     }
 }

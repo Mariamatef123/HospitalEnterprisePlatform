@@ -1,6 +1,6 @@
 ﻿using FluentAssertions;
 using Hospital.Domain.Employees;
-using Hospital.Domain.Employees.ValueObjects;
+using Hospital.Domain.Common.ValueObjects;
 namespace Hospital.Domain.Tests.Employees
 {
     public class LabTechnicianTests

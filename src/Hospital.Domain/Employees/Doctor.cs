@@ -1,4 +1,5 @@
-﻿using Hospital.Domain.Employees.ValueObjects;
+﻿using Hospital.Domain.Common.ValueObjects;
+using Hospital.Domain.Departments;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,5 +32,7 @@ namespace Hospital.Domain.Employees
             EmployeePermission.CreatePrescription
         };
         }
-        }
+      
+    }
+    
 }

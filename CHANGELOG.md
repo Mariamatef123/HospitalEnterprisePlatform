@@ -175,3 +175,62 @@
 * Verified employee reassignment behavior.
 
 * Verified Department Domain isolation from Infrastructure, Application, Presentation, JSON, database, EF Core, HTTP, and file I/O.
+
+## [0.5.0] — 2026-09-12
+
+### Added
+
+* Implemented `Patient` as the Patient aggregate root.
+* Added Patient identity using `Guid`.
+* Added Patient National ID.
+* Added Arabic and English patient names.
+* Added Date of Birth with validation against future dates.
+* Added Gender and Blood Type.
+* Added Patient status and lifecycle states.
+* Added `ContactInfo` as an immutable value object.
+* Added `EmailAddress` value object.
+* Added `HomeAddress` value object.
+* Added `EmergencyContact` value object.
+* Reused shared `PersonName`, `NationalId`, and `PhoneNumber` value objects.
+* Added Patient validation for required information.
+* Added validation for Patient contact information.
+* Added Patient lifecycle and status rules.
+* Added immutable contact information replacement behavior.
+
+### Testing
+
+* Added automated Patient Domain tests.
+* Added tests for valid Patient creation.
+* Added tests for required Patient information.
+* Added tests for Arabic and English names.
+* Added tests for invalid National ID.
+* Added tests for invalid Date of Birth.
+* Added tests for invalid contact information.
+* Added tests for Patient status.
+* Added tests for `ContactInfo` structural equality.
+* Added tests for equal `ContactInfo` hash codes.
+* Added tests for different `ContactInfo` values.
+* Added tests verifying `ContactInfo` immutability.
+* Added tests verifying replacement of `ContactInfo` without mutating the original instance.
+
+### Documentation
+
+* Added Patient Domain documentation.
+* Added Patient aggregate design documentation.
+* Added Patient lifecycle documentation.
+* Added Patient UML class diagram.
+* Documented Patient and `ContactInfo` composition.
+* Documented Patient invariants and required-field rules.
+* Documented sensitive Patient data classification.
+* Documented value object immutability and structural equality.
+* Documented the design decision to model `ContactInfo` as a value object.
+
+### Verification
+
+* Verified successful solution build with `dotnet build`.
+* Verified all Patient Domain tests pass with `dotnet test`.
+* Verified Patient aggregate invariants.
+* Verified `ContactInfo` structural equality.
+* Verified `ContactInfo` immutability.
+* Verified Patient Domain isolation from Infrastructure, Application,
+  Presentation, JSON, database, EF Core, HTTP, and file I/O.

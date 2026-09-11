@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Hospital.Domain.Employees.ValueObjects
+namespace Hospital.Domain.Common.ValueObjects
 {
     public sealed class NationalId : ValueObject
     {
