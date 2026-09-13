@@ -6,7 +6,7 @@ This document defines the validation strategy for the **Hospital Domain**.
 
 The domain uses the **Result Pattern** to represent expected validation and business-rule failures explicitly.
 
-Unexpected technical failures are outside the current Domain implementation scope.
+Unexpected technical failures are not converted into `Result` failures. They remain exceptions and are handled at the appropriate application or infrastructure boundary.
 
 ---
 
@@ -24,9 +24,9 @@ Examples include:
 * Invalid domain value
 * Violation of a domain business rule
 
-These are expected validation failures.
+These are expected validation or business-rule failures.
 
-They should be represented explicitly using `Result` or `Result<T>` rather than being used as exceptional program failures.
+They should be represented explicitly using `Result` or `Result<T>` rather than being treated as exceptional program failures.
 
 ---
 
@@ -62,9 +62,10 @@ Patient  Result.Failure(...)
 
 A failed validation does not mean that the system itself has malfunctioned.
 
-It means that the domain data does not satisfy the required rules.
+It means that the supplied domain data does not satisfy the required rules.
 
 ---
+
 ## 3. Validation Errors
 
 Validation failures are represented using structured `ValidationError` objects.
@@ -93,7 +94,7 @@ Examples:
 
 ```text
 PATIENT.NATIONAL_ID.REQUIRED
-PATIENT.NATIONAL_ID.INVALID
+PATIENT.NATIONAL_ID.FORMAT_INVALID
 PATIENT.NATIONAL_ID.LENGTH_INVALID
 PATIENT.NAME.REQUIRED
 PATIENT.NAME.INVALID
@@ -119,10 +120,10 @@ Example:
 
 ```text
 Code:
-PATIENT.NATIONAL_ID.INVALID
+PATIENT.NATIONAL_ID.LENGTH_INVALID
 
 Message:
-National ID must contain 14 digits.
+National ID must contain exactly 14 digits.
 ```
 
 The message is separate from the error code so that the message can change without changing the identity of the validation error.
@@ -171,24 +172,9 @@ The collection:
 * Must not expose the original mutable collection.
 * Allows additional information without changing the main error `Code` or `Message`.
 
-Example:
-
-```text
-Code:
-PATIENT.INVALID
-
-Message:
-Patient contains invalid information.
-
-Field:
-null
-
-Details:
-- National ID format is invalid.
-- Date of birth cannot be in the future.
-```
-
 A validation operation may return multiple `ValidationError` objects when multiple independent rules fail.
+
+Multiple independent validation failures should normally be represented as separate `ValidationError` objects rather than combining unrelated failures into one error.
 
 ### 3.5 Validation Error Immutability
 
@@ -213,12 +199,11 @@ The `Details` collection is defensively copied so that changes to the collection
 
 Therefore, once a `ValidationError` has been created, its state cannot be changed.
 
-
 ---
 
 ## 4. Result Pattern
 
-The Domain will provide two result forms.
+The Domain provides two result forms.
 
 ### Result
 
@@ -263,6 +248,8 @@ Result<T>
 Validation Errors
 ```
 
+A failed `Result<T>` does not expose a successful domain value.
+
 ---
 
 ## 5. Domain Isolation
@@ -286,16 +273,18 @@ Validation should operate on domain data and domain rules only.
 
 ## 6. Duplicate National ID
 
-Duplicate National ID handling requires checking whether another patient already has the same National ID.
+Duplicate National ID handling is a **business-rule validation** that requires checking whether another patient already has the same National ID.
 
-The actual lookup of existing patients is outside the current isolated validation model.
+The actual lookup of existing patients is outside the current isolated `PatientValidator` model.
 
-Therefore, the domain validation model should distinguish between:
+Therefore, the domain distinguishes between:
 
 ```text
 Validate National ID format
         ↓
-Domain validation
+Local validation
+        ↓
+Result
 ```
 
 and:
@@ -304,26 +293,254 @@ and:
 Check whether National ID already exists
         ↓
 Requires existing patient data
+        ↓
+Business-rule validation
+        ↓
+Result.Failure(...)
 ```
 
-The current Day 6 Domain work will focus on the validation rules that can be evaluated from the domain data itself.
+For example:
+
+```text
+PATIENT.NATIONAL_ID.DUPLICATE
+```
+
+may be returned when the registration flow determines that the National ID already belongs to another patient.
+
+The current Day 6 isolated validator does not perform this lookup.
 
 ---
 
-## 7. Unexpected Technical Failures
+# 7. Expected vs Unexpected Errors
 
-Unexpected technical failures are conceptually different from domain validation failures.
+The validation system must distinguish between **expected domain failures** and **unexpected technical failures**.
+
+## 7.1 Expected Validation Failures
+
+Expected failures occur when supplied domain data does not satisfy a known validation or business rule.
 
 Examples include:
 
-* Database failure
+* Missing National ID
+* National ID with invalid format
+* National ID with invalid length
+* Missing patient name
+* Invalid patient name
+* Date of birth in the future
+* Invalid Gender value
+* Invalid Blood Type value
+* Incomplete emergency contact information
+* Invalid emergency contact relationship
+* Duplicate National ID when checked during patient registration
+
+These failures should be represented using:
+
+```text
+Expected Domain Failure
+        ↓
+ValidationError
+        ↓
+Result.Failure(...)
+```
+
+They are normal outcomes of processing input and should be handled explicitly by the calling code.
+
+---
+
+## 7.2 Unexpected Technical Failures
+
+Unexpected technical failures are different from invalid domain input.
+
+Examples include:
+
+* Database connection failure
 * File-system failure
+* Corrupted persistence file
+* Permission denied
 * Network failure
 * External service failure
+* Plugin loading failure
+* Unexpected programming error
 
-These are outside the current Domain implementation scope.
+These failures should **not** be converted into `ValidationError` objects simply because an exception occurred.
 
-The Domain layer should not convert technical failures into validation errors.
+The general flow is:
+
+```text
+Technical Failure
+        ↓
+Exception
+        ↓
+Handled at the appropriate boundary
+```
+
+The Domain validation system must not silently swallow these exceptions.
+
+---
+
+## 7.3 Invalid Date Handling
+
+An invalid patient date that violates a known domain rule is an expected validation failure.
+
+For example:
+
+```text
+DateOfBirth > Today
+        ↓
+PATIENT.DATE_OF_BIRTH.FUTURE
+        ↓
+Result.Failure(...)
+```
+
+This is not an unexpected technical exception.
+
+The `PatientValidator` is responsible for detecting this rule violation.
+
+---
+
+## 7.4 Missing Name Handling
+
+A missing required patient name is an expected validation failure.
+
+For example:
+
+```text
+FirstArabicName = ""
+        ↓
+PATIENT.ARABIC_FIRST_NAME.REQUIRED
+        ↓
+Result.Failure(...)
+```
+
+The validator should report the validation error rather than throw an exception for this expected input condition.
+
+---
+
+## 7.5 Invalid Command Input
+
+When a future application/use-case layer receives a patient registration command, invalid patient data should be passed through the domain validation flow.
+
+For example:
+
+```text
+RegisterPatientCommand
+        ↓
+PatientValidationInput
+        ↓
+PatientValidator
+        ↓
+Result.Failure(...)
+```
+
+Invalid command data should not be represented as an unexpected technical exception.
+
+The Application layer may then translate the validation result into the appropriate response for the caller.
+
+---
+
+## 7.6 Corrupted File Handling
+
+A corrupted persistence file is not a patient validation error.
+
+For example:
+
+```text
+Read patients.json
+        ↓
+File is corrupted
+        ↓
+Technical/Persistence Failure
+        ↓
+Exception
+```
+
+It should not be converted into:
+
+```text
+Result.Failure(
+    PATIENT.FILE.INVALID
+)
+```
+
+because the problem is with the persistence mechanism, not with the validity of patient input.
+
+File-related exception handling belongs to the appropriate Infrastructure or Application boundary.
+
+---
+
+## 7.7 Permission Error Handling
+
+A file-system permission failure is an infrastructure failure.
+
+For example:
+
+```text
+Write patients.json
+        ↓
+Access denied
+        ↓
+Exception
+```
+
+The validation system must not convert this into a patient validation error.
+
+The appropriate infrastructure or application layer is responsible for handling, logging, or reporting the failure.
+
+---
+
+## 7.8 Plugin Loading Errors
+
+A plugin loading failure is a technical failure rather than a domain validation failure.
+
+For example:
+
+```text
+Load Statistics Plugin
+        ↓
+Plugin cannot be loaded
+        ↓
+Exception
+```
+
+The Domain validation system must not convert plugin loading failures into `ValidationError` objects.
+
+Plugin loading belongs outside the Domain validation boundary.
+
+---
+
+## 7.9 Validation Must Not Hide Technical Exceptions
+
+The `PatientValidator` must only convert **known domain validation failures** into `Result.Failure(...)`.
+
+It must not use a broad exception handler such as:
+
+```csharp
+try
+{
+    // validation
+}
+catch (Exception)
+{
+    return Result.Failure(...);
+}
+```
+
+This would incorrectly hide unexpected technical or programming failures.
+
+The intended behavior is:
+
+```text
+Expected domain rule violation
+        ↓
+Result.Failure(...)
+
+
+Unexpected technical/programming failure
+        ↓
+Exception
+```
+
+This distinction ensures that the Result Pattern communicates expected outcomes without masking real system failures.
 
 ---
 
@@ -331,7 +548,7 @@ The Domain layer should not convert technical failures into validation errors.
 
 The Day 6 Domain validation strategy follows this principle:
 
-> Expected domain validation failures are represented explicitly using `Result` / `Result<T>` and structured `ValidationError` objects.
+> **Expected domain validation and business-rule failures are represented explicitly using `Result` / `Result<T>` and structured `ValidationError` objects. Unexpected technical failures remain exceptions and must not be silently converted into validation failures.**
 
 The Domain layer remains isolated from infrastructure and application concerns.
 
@@ -339,7 +556,7 @@ The Domain layer remains isolated from infrastructure and application concerns.
 
 ## 9. Scope of Day 6 Domain Work
 
-The current implementation will focus on:
+The current implementation focuses on:
 
 * `ValidationError`
 * `Result`
@@ -347,6 +564,7 @@ The current implementation will focus on:
 * Domain validation
 * `PatientValidator`
 * Patient validation rules
+* Separation of expected and unexpected failures
 * Validation tests
 
-Application and Infrastructure error-handling mechanisms are outside the current scope.
+Application and Infrastructure error-handling mechanisms are outside the current implementation scope.
