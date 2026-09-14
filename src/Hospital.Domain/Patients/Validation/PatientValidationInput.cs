@@ -48,12 +48,12 @@ namespace Hospital.Domain.Patients.Validation
             string city,
             string street,
             string buildingNumber,
-            string? district,
-            string? apartmentNumber,
-            string? postalCode,
-            string? emergencyName,
-            EmergencyContactRelationship? emergencyRelationship,
-            string? emergencyPhoneNumber)
+          string? district = null,
+          string? apartmentNumber = null,
+          string? postalCode = null,
+          string? emergencyName = null,
+          EmergencyContactRelationship? emergencyRelationship = null,
+          string? emergencyPhoneNumber = null)
         {
             NationalId = nationalId;
 
