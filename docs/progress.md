@@ -770,3 +770,218 @@ Completed:
 * GitHub Issue, labels, feature branch, commits, PR, CI, review, and merge
 
 The Patient Domain remains focused on patient identity and core patient information without introducing appointments, medical records, billing, persistence, databases, EF Core, HTTP, console logic, application services, or repository implementations.
+# Day 6 — Validation Engine & Result Pattern
+
+**Status:** ✅ Completed
+
+## Phase 1 — Study & Design
+
+* [x] Task 6.1 — Study Validation Responsibilities
+* [x] Task 6.2 — Study Result Pattern
+* [x] Task 6.3 — Compare Result Pattern vs Exception Handling
+* [x] Task 6.4 — Define Expected Validation Failures
+* [x] Task 6.5 — Define Unexpected Technical Failures
+* [x] Task 6.6 — Define Validation Error Structure
+* [x] Task 6.7 — Define Validation Error Code Convention
+
+## Phase 2 — Result Modeling
+
+### Checkpoint 2 — ValidationError
+
+* [x] Task 6.8 — Create `ValidationError`
+* [x] Task 6.9 — Add Error Code
+* [x] Task 6.10 — Add Error Message
+* [x] Task 6.11 — Add Field Information
+* [x] Task 6.12 — Add Validation Error Details
+* [x] Task 6.13 — Enforce ValidationError Invariants
+
+### Checkpoint 3 — Result
+
+* [x] Task 6.14 — Create `Result`
+* [x] Task 6.15 — Add `IsSuccess`
+* [x] Task 6.16 — Add `IsFailure`
+* [x] Task 6.17 — Add Validation Errors
+* [x] Task 6.18 — Implement `Result.Success()`
+* [x] Task 6.19 — Implement `Result.Failure()`
+* [x] Task 6.20 — Protect Invalid Result States
+
+### Checkpoint 4 — Result<T>
+
+* [x] Task 6.21 — Create `Result<T>`
+* [x] Task 6.22 — Add Successful Value
+* [x] Task 6.23 — Add Validation Errors
+* [x] Task 6.24 — Implement `Result<T>.Success()`
+* [x] Task 6.25 — Implement `Result<T>.Failure()`
+* [x] Task 6.26 — Protect Value Access on Failure
+* [x] Task 6.27 — Protect Invalid Generic Result States
+
+## Phase 3 — Patient Validation
+
+### Checkpoint 5 — Validation Design
+
+* [x] Task 6.28 — Define `PatientValidationInput`
+* [x] Task 6.29 — Define Patient Required Fields
+* [x] Task 6.30 — Define National ID Validation Rules
+* [x] Task 6.31 — Define Patient Name Validation Rules
+* [x] Task 6.32 — Define Date of Birth Validation Rules
+* [x] Task 6.33 — Define Gender and Blood Type Rules
+* [x] Task 6.34 — Define Emergency Contact Validation Rules
+* [x] Task 6.35 — Define Patient Validation Error Codes
+
+### Checkpoint 6 — PatientValidator Implementation
+
+* [x] Task 6.36 — Create `PatientValidator`
+* [x] Task 6.37 — Implement Required-Field Validation
+* [x] Task 6.38 — Implement National ID Length Validation
+* [x] Task 6.39 — Implement National ID Format Validation
+* [x] Task 6.40 — Implement Patient Name Validation
+* [x] Task 6.41 — Implement Date, Enum, and Emergency Contact Validation
+* [x] Task 6.42 — Collect Multiple Validation Errors
+
+## Phase 4 — Expected vs Unexpected Failures
+
+* [x] Task 6.43 — Define Expected Validation Failures
+* [x] Task 6.44 — Define Business Validation Failures
+* [x] Task 6.45 — Define Unexpected Technical Failures
+* [x] Task 6.46 — Return Expected Failures through `Result`
+* [x] Task 6.47 — Preserve Technical Exceptions
+* [x] Task 6.48 — Avoid Broad Exception Handling in Validator
+* [x] Task 6.49 — Document Duplicate National ID Behavior
+* [x] Task 6.50 — Define `PATIENT.NATIONAL_ID.DUPLICATE`
+* [x] Task 6.51 — Verify Validation/Exception Separation
+* [x] Task 6.52 — Verify Domain Validation Boundary
+
+## Phase 5 — Patient Registration Use Case
+
+* [x] Task 6.53 — Define Patient Registration Actor
+* [x] Task 6.54 — Define Patient Registration Input
+* [x] Task 6.55 — Define Registration Preconditions
+* [x] Task 6.56 — Define Patient Registration Main Flow
+* [x] Task 6.57 — Define Validation Failure Flow
+* [x] Task 6.58 — Define Duplicate National ID Flow
+* [x] Task 6.59 — Define Unexpected Technical Failure Flow
+* [x] Task 6.60 — Document Patient Registration Use Case
+
+> Patient Registration implementation is intentionally deferred to the Application layer.
+
+## Phase 6 — Domain Tests
+
+### Checkpoint 9 — Result Tests
+
+* [x] Task 6.61 — Test Successful `Result`
+* [x] Task 6.62 — Test Failed `Result`
+* [x] Task 6.63 — Test Successful `Result<T>`
+* [x] Task 6.64 — Test Failed `Result<T>`
+* [x] Task 6.65 — Test Multiple Validation Errors
+* [x] Task 6.66 — Test `ValidationError` Details
+* [x] Task 6.67 — Test Invalid Result States
+
+### Checkpoint 10 — PatientValidator Tests
+
+* [x] Task 6.68 — Test Valid Patient Input
+* [x] Task 6.69 — Test Empty Arabic Name
+* [x] Task 6.70 — Test Empty English Name
+* [x] Task 6.71 — Test Whitespace-Only Name
+* [x] Task 6.72 — Test Invalid National ID Length
+* [x] Task 6.73 — Test Invalid National ID Format
+* [x] Task 6.74 — Test Future Date of Birth
+* [x] Task 6.75 — Test Missing Required Field
+* [x] Task 6.76 — Test Valid Arabic Characters
+* [x] Task 6.77 — Test Multi-byte Arabic Characters
+* [x] Task 6.78 — Test Leading and Trailing Whitespace
+* [x] Task 6.79 — Test Multiple Validation Errors
+* [x] Task 6.80 — Test Validation Failure Does Not Throw
+
+## Phase 7 — UML & Activity Diagram
+
+### Checkpoint 11 — Patient Registration Use Case Documentation
+
+* [x] Task 6.81 — Create `patient-use-case.md`
+* [x] Task 6.82 — Document Registration Actor
+* [x] Task 6.83 — Document Registration Input
+* [x] Task 6.84 — Document Preconditions
+* [x] Task 6.85 — Document Main Success Flow
+* [x] Task 6.86 — Document Validation Failure Flow
+* [x] Task 6.87 — Document Duplicate National ID Flow
+* [x] Task 6.88 — Document Unexpected Technical Failure
+* [x] Task 6.89 — Document Expected vs Unexpected Failures
+
+### Checkpoint 12 — Patient Registration Activity Diagram
+
+* [x] Task 6.90 — Design Patient Registration Activity Flow
+* [x] Task 6.91 — Add Receptionist Swimlane
+* [x] Task 6.92 — Add Application Swimlane
+* [x] Task 6.93 — Add Domain Swimlane
+* [x] Task 6.94 — Add Infrastructure Swimlane
+* [x] Task 6.95 — Verify Activity Diagram Against Use Case
+
+## Phase 8 — Final Verification
+
+* [x] Task 6.96 — Run `dotnet build`
+* [x] Task 6.97 — Run `dotnet test`
+* [x] Task 6.98 — Verify Result Behavior
+* [x] Task 6.99 — Verify PatientValidator Behavior
+* [x] Task 6.100 — Verify Expected Validation Failures
+* [x] Task 6.101 — Verify Unexpected Technical Failures
+* [x] Task 6.102 — Verify No LINQ in Validation Implementation
+* [x] Task 6.103 — Verify Domain Isolation
+* [x] Task 6.104 — Verify All Domain Tests Pass
+* [x] Task 6.105 — Review Git Changes
+* [x] Task 6.106 — Verify Working Tree
+
+## Phase 9 — GitHub
+
+* [x] Task 6.107 — Update `progress.md`
+* [x] Task 6.108 — Update `changelog.md`
+* [x] Task 6.109 — Push Feature Branch
+* [x] Task 6.110 — Create Pull Request
+* [x] Task 6.111 — Link Pull Request to Issue #24
+* [x] Task 6.112 — Verify CI
+* [x] Task 6.113 — Review Pull Request
+* [x] Task 6.114 — Merge Pull Request
+* [x] Task 6.115 — Update Local `develop`
+* [x] Task 6.116 — Verify Issue #24 Closed
+* [x] Task 6.117 — Delete Feature Branch
+* [x] Task 6.118 — Update GitHub Project
+* [x] Task 6.119 — Verify Final GitHub State
+
+## Phase 10 — Release
+
+* [x] Task 6.120 — Complete Day 6 Release Verification
+* [x] Task 6.121 — Confirm Validation Milestone
+* [x] Task 6.122 — Prepare `v0.1.0-domain-foundation`
+* [x] Task 6.123 — Create Release Tag
+* [x] Task 6.124 — Verify Release
+* [x] Task 6.125 — Confirm Day 6 Documentation
+* [x] Task 6.126 — Confirm Build and Test Status
+* [x] Task 6.127 — Complete Week 1 Domain Foundation
+
+## Day 6 Outcome
+
+The Validation Engine and Result Pattern have been implemented as a domain-level validation foundation.
+
+Completed:
+
+* `ValidationError`
+* `Result`
+* `Result<T>`
+* `PatientValidationInput`
+* `PatientValidator`
+* Structured validation error codes
+* Multiple validation error collection
+* Expected validation failure handling through `Result`
+* Separation of expected failures from unexpected technical exceptions
+* Patient Registration use case documentation
+* Patient Registration Activity Diagram
+* Result and Result<T> automated tests
+* PatientValidator automated tests
+* Build and test verification
+* No-LINQ verification
+* Domain isolation verification
+* GitHub Issue #24
+* Validation feature branch
+* Pull Request and CI verification
+* Documentation updates
+* Week 1 domain foundation release
+
+The Validation layer remains focused on domain validation and result modeling. Patient Registration orchestration and persistence are intentionally deferred to the Application and Infrastructure layers respectively.

@@ -234,3 +234,62 @@
 * Verified `ContactInfo` immutability.
 * Verified Patient Domain isolation from Infrastructure, Application,
   Presentation, JSON, database, EF Core, HTTP, and file I/O.
+## [0.6.0] — 2026-09-14
+
+### Added
+
+* Implemented `ValidationError` for structured domain validation errors.
+* Implemented non-generic `Result` for validation and business operation outcomes.
+* Implemented generic `Result<T>` for operations returning a successful value.
+* Added `PatientValidationInput` as an immutable validation input model.
+* Implemented `PatientValidator` for Patient input validation.
+* Added required-field validation for Patient registration.
+* Added National ID length and format validation.
+* Added Arabic and English name validation.
+* Added Date of Birth future-date validation.
+* Added Gender and Blood Type validation.
+* Added Emergency Contact completeness validation.
+* Added support for collecting multiple validation errors.
+* Distinguished expected validation/business failures from unexpected technical exceptions.
+
+### Testing
+
+* Added automated `Result` tests.
+* Added automated `Result<T>` tests.
+* Added tests for successful results.
+* Added tests for failure results.
+* Added tests for multiple validation errors.
+* Added tests for `ValidationError` details.
+* Added tests for invalid Result states.
+* Added automated `PatientValidator` tests.
+* Added tests for required Patient information.
+* Added tests for invalid National ID length.
+* Added tests for invalid National ID format.
+* Added tests for Arabic and English names.
+* Added tests for whitespace-only names.
+* Added tests for future Date of Birth.
+* Added tests for valid Arabic and multi-byte Arabic characters.
+* Added tests for multiple validation errors.
+* Added tests verifying validation failures do not throw exceptions.
+
+### Documentation
+
+* Added Patient validation strategy documentation.
+* Added Patient Registration use case documentation.
+* Added Patient Registration Activity Diagram.
+* Documented expected validation/business failures and unexpected technical failures.
+* Documented Patient Registration validation and duplicate National ID behavior.
+* Documented validation error codes and messages.
+
+### Verification
+
+* Verified successful solution build with `dotnet build`.
+* Verified all Domain tests pass with `dotnet test`.
+* Verified `Result` and `Result<T>` behavior.
+* Verified Patient validation behavior.
+* Verified multiple validation errors are collected.
+* Verified expected validation failures are returned through `Result`.
+* Verified unexpected technical failures remain distinguishable from validation failures.
+* Verified Domain isolation from Infrastructure, Application, Presentation, JSON,
+  database, EF Core, HTTP, and file I/O.
+* Verified no LINQ was introduced in the validation implementation.
